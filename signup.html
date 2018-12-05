@@ -12,21 +12,37 @@
                 <script src="https://unpkg.com/typewriter-effect/dist/core.js"></script>
                 <link rel="stylesheet" type="text/css" media="screen" href="match.css" />
               </head>
-<nav class="navbar navbar-expand-sm bg navbar fixed-top">
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" width="100" height="100" class="d-inline-block align-top" alt="">
-        </a>
-        <ul class="navbar-nav">
-            <li class="nav-item" style="margin-right:30px">
-            <a class="fas fa-sign-out-alt" href="javascript:void(0)"> signout</a>
-            </li>
-            <li class="nav-item">
-            <a class="fas fa-home" href="javascript:void(0)"> home</a>
-            </li>
-        </ul>
-    </nav>
+              <body>
+                    <nav class="navbar navbar-expand-sm bg navbar fixed-top">
+                            <a class="navbar-brand" href="#">
+                                <img src="images/logo.png" width="100" height="100" class="d-inline-block align-top" alt="">
+                            </a>
+                            <ul class="navbar-nav">
+                                <li class="nav-item" style="margin-right:30px">
+                                <a class="fas fa-sign-out-alt" href="signup.html"> signout</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="fas fa-home" href="javascript:void(0)"> home</a>
+                                </li>
+                            </ul>
+                    </nav>
+                    <div class="container">
+                      <div class="c-img">
+                        <h1>RED PLANET</h1><img src="https://cdn.thinglink.me/api/image/751885489958551552/1240/10/scaletowidth" alt="mars ground"/>
+                      </div>
+                      <div class="c-form">
+                        <form>
+                          <input type="email" placeholder="Username"/>
+                          <input type="Password" placeholder="Password"/>
+                          <div class="btn-group">
+                            <button>Sign Up</button>
+                            <button>Sign In</button>
+                          </div><a href="#">Forgot Password?</a>
+                        </form>
+                      </div>
+                    </div>
 
-    <div id="progress"></div>
+    <!-- <div id="progress"></div>
 
 <div class="center">
   <div id="register">
@@ -40,14 +56,16 @@
     </div>
 
   </div>
-</div>
+</div> -->
 
 <body>
     <footer class="footer container-fluid text-center">
         <b><p>&copy psambo  matcha 2018</p></b>
     </footer>
 
-<script>
+
+
+<!-- <script>
 
 var questions = [
   {question:"What's your first name?"},
@@ -98,25 +116,25 @@ var questions = [
   function putQuestion() {
     inputLabel.innerHTML = questions[position].question
     inputField.value = ''
-    inputField.type = questions[position].type || 'text'  
+    inputField.type = questions[position].type || 'text'
     inputField.focus()
     showCurrent()
   }
-  
+
   // when all the questions have been answered
   function done() {
-    
+
     // remove the box if there is no next question
     register.className = 'close'
-    
+
     // add the h1 at the end with the welcome text
     var h1 = document.createElement('h1')
-    h1.appendChild(document.createTextNode('Welcome ' + questions[0].value + '!'))
+    h1.appendChild(document.createTextNode('Welcome  to Matcha '  + ' '+ questions[0].value + '!'))
     setTimeout(function() {
-      register.parentElement.appendChild(h1)     
+      register.parentElement.appendChild(h1)
       setTimeout(function() {h1.style.opacity = 1}, 50)
     }, eTime)
-    
+
   }
 
   // when submitting the current question
@@ -128,14 +146,12 @@ var questions = [
     // check if the pattern matches
     if (!inputField.value.match(questions[position].pattern || /.+/)) wrong()
     else ok(function() {
-      
       // set the progress of the background
       progress.style.width = ++position * 100 / questions.length + 'vw'
 
       // if there is a new question, hide current and load next
       if (questions[position]) hideCurrent(putQuestion)
       else hideCurrent(done)
-             
     })
 
   }
@@ -178,7 +194,7 @@ var questions = [
 
 }())
 
-</script>
+</script> -->
 
 </body>
 </html>
