@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+        <head>
                 <title>Home Page</title>
                 <!-- Required meta tags -->
                 <meta charset="utf-8">
@@ -13,9 +13,8 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="match.css" />
                 <script src="myscripts.js"></script>
               </head>
-<body>
-
-                      <nav class="navbar navbar-expand-sm bg navbar fixed-top">
+              <body>
+                    <nav class="navbar navbar-expand-sm bg navbar fixed-top">
                             <a class="navbar-brand" href="#">
                                 <img src="images/logo.png" width="100" height="100" class="d-inline-block align-top" alt="">
                             </a>
@@ -31,12 +30,11 @@
                                   </li>
                             </ul>
                     </nav>
-                    
-                  <!-- sign in form -->
-
                     <div class="signin">
                       <form>
-                          <h2 style="color: white">login</h2>
+                          <h2 style="color: white">signup</h2>
+                          <input type="text" name="username" placeholder="Username">
+                          <input type="password" name="pass" placeholder="Password">
                           <input type="text" name="username" placeholder="Username">
                           <input type="password" name="pass" placeholder="Password">
                           <a href="#"><input type="button" value="Log in"  style="margin-top:90px;"></a></br>
@@ -48,5 +46,12 @@
                       Dont have accout?<a href="#">&nbsp;Sign Up</a>
                       </form>
                   </div>
+
+
+<body>
+    <footer class="footer container-fluid text-center">
+        <b><p>&copy psambo  matcha 2018</p></b>
+    </footer>
+
 </body>
 </html>

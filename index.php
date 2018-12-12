@@ -1,6 +1,3 @@
-<?php
-	include 'login.php';
-?>
 
 <!doctype html>
 <html lang="en">
@@ -17,81 +14,75 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="match.css" />
 </head>
   <body>
-		
-    <!-- <div class="containe">
-        <nav class="navbar navbar-expand-sm bg navbar fixed-top">
-            <a class="navbar-brand" href="#">
-                <img src="images/logo.png" width="100" height="100" class="d-inline-block align-top" alt="">
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item" style="margin-right:30px">
-                <a class="fas fa-user-plus" href="signup.html"> sign-up</a>
-                </li>
-                <li class="nav-item">
-                <a class="fas fa-sign-in-alt" href="login.html"> sign-in</a>
-                </li>
-            </ul>
-		</nav>
-    </div> -->
+					<div class="o-wall">
+						<div class="o-wall__claim">
+							<div class="o-wall__letters-list">
+							<b class="o-wall__letters-list--letter">
+								W
+							</b>
+							<b class="o-wall__letters-list--letter">
+								E
+							</b>
+							<b class="o-wall__letters-list--letter">
+								L
+							</b>
+							<b class="o-wall__letters-list--letter">
+								C
+							</b>
+							<b class="o-wall__letters-list--letter">
+								O
+							</b>
+							<b class="o-wall__letters-list--letter">
+								M
+							</b>
+							<b class="o-wall__letters-list--letter">
+								E
+							</b>
+						</div>
+							<div class="o-wall__letters-list">
+							<b class="o-wall__letters-list--letter">
+								T
+							</b>
+							<b class="o-wall__letters-list--letter">
+								O
+							</b>
+							</div>
+							<div class="o-wall__letters-list">
+							<b class="o-wall__letters-list--letter">
+								M
+							</b>
+							<b class="o-wall__letters-list--letter">
+								A
+							</b>
+							<b class="o-wall__letters-list--letter">
+								T
+							</b>
+							<b class="o-wall__letters-list--letter">
+								C
+							</b>
+							<b class="o-wall__letters-list--letter">
+								H
+							</b>
+							<b class="o-wall__letters-list--letter">
+								A
+							</b>
+							</div>
+						</div>
+						</div>
 
-  
-	<div class="o-wall">
-		<div class="o-wall__claim">
-		  <div class="o-wall__letters-list">
-			<b class="o-wall__letters-list--letter">
-			  W
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  E
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  L
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  C
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  O
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  M
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  E
-			</b>
-		</div>
-		  <div class="o-wall__letters-list">
-			<b class="o-wall__letters-list--letter">
-			  T
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  O
-			</b>
-		  </div>
-		  <div class="o-wall__letters-list">
-			<b class="o-wall__letters-list--letter">
-			  M
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  A
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  T
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  C
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  H
-			</b>
-			<b class="o-wall__letters-list--letter">
-			  A
-			</b>
-			<p>&hearts;❤️
-			</p>
-		  </div>
-		</div>
-	  </div>
+						<nav class="navbar navbar-expand-sm bg navbar fixed-top">
+                            <a class="navbar-brand" href="#">
+                                <img src="images/logo.png" width="100" height="100" class="d-inline-block align-top" alt="">
+                            </a>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item" style="margin-right:30px">
+                                <a class="fas fa-sign-out-alt" href="login.php"> signin</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="fas fa-user-plus" href="signup.html"> signup</a>
+                                </li>
+                            </ul>
+                    </nav>
 
 	  <footer class="footer container-fluid text-center">
 		<b><p> psambo &copy matcha 2018</p></b>
