@@ -115,93 +115,7 @@ footer{
 
 
 
-  /* signup */
-
-.box2{
-    width: 1200px;
-    padding: 40px;
-    top: 30%;
-    left: 60%;
-    /* transform: translate(-50%, -50%); */
-    text-align: left;
-}
-
-.box2 input
-{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #64485c;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: #501b1d;
-    border-radius: 24px;
-    transition: 0.25s;
-}
-
-
-.box2 input[type = "password"], .box input[type = "password"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #64485c;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: #501b1d;
-    border-radius: 24px;
-    transition: 0.25s;
-}
-
-.h1, h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  color: white;
-}
-}
-
-.box2 input:focus
-{
-    width: 280px;
-    border-color: #501b1d;
-}
-
-
-.box2 input[type = "submit"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2e1114;
-    padding: 14px 40px;
-    outline: none;
-    color: #501b1d;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
-}
-
-
-.box2 input[type = "submit"]:hover{
-background: #64485c;
-}
-
-.box2{
-    padding-top: 10%;
-}
-
-
-
-
-
-
-
+  
 
 /* sign in form */
 
@@ -266,7 +180,7 @@ a{
 }
 
 a:hover{
-  color: orangered;
+  color: yellow;
 }
 
 .container

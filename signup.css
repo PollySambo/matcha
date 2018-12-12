@@ -1,0 +1,102 @@
+body{
+
+    background-image: url(images/regular_show.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
+
+footer{
+    position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+  color: white;
+   text-align: center;
+}
+
+.signin
+{
+  background: rgba(44, 62, 80, 0.7);
+  padding: 50px;
+  width: 350px;
+  margin: auto;
+  margin-top: 90px;
+  height: 500px;
+  margin-left: 590px;
+}
+
+form
+{
+  width: 240px;
+  text-align: center;
+}
+
+input
+{
+  width: 240px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  font-family: 'Play', sans-serif;
+  font-size: 16px;
+  font-weight: 200px;
+  padding: 10px 0;
+  transition: border 0.5s;
+  outline: none;
+  color: #fff;
+}
+
+input[type=button]
+{
+  border: none;
+  width: 130px;
+  background: white;
+  color: #000;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+input[type=button]:hover
+{
+  color: #fff;
+  background-color: black;
+}
+
+h2{
+  color: white;
+}
+a{
+  color: yellow;
+  text-decoration: blink;
+}
+
+a:hover{
+  color: yellow;
+}
+
+.container
+{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+::placeholder{
+  color: aliceblue;
+  opacity: 0.8;
+}
+.my-btn {
+  margin-top: 50px;
+}
+
+.fas {
+    font-weight: 900;
+    color: white;
+}

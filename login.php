@@ -21,17 +21,14 @@
                             </a>
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item" style="margin-right:30px">
-                                <a class="fas fa-sign-out-alt" href="signup.html"> signout</a>
-                                </li>
-                                <li class="nav-item " style="margin-right:30px">
-                                <a class="fas fa-sign-out-alt" href="login.php"> signin</a>
+                                <a class="fas fa-home" href="index.php"> home</a>
                                 </li>
                                 <li class="nav-item" >
-                                  <a class="fas fa-home" href="index.php"> home</a>
+                                    <a class="fas fa-sign-out-alt" href="signup.php"> signup</a>
                                   </li>
                             </ul>
                     </nav>
-                    
+
                   <!-- sign in form -->
 
                     <div class="signin">
@@ -39,13 +36,13 @@
                           <h2 style="color: white">login</h2>
                           <input type="text" name="username" placeholder="Username">
                           <input type="password" name="pass" placeholder="Password">
-                          <a href="#"><input type="button" value="Log in"  style="margin-top:90px;"></a></br>
+                          <a href="#"><input type="button" value="Log in"  style="margin-top:70px;"></a></br>
                       </br>
                       <div id="container">
                           <a href="#" style=" margin-right:0px; font-size:13px;
                           font-family: tahoma, Geneva, sans-serif;">Forgot Password</a>
                       </div></br></br>
-                      Dont have accout?<a href="#">&nbsp;Sign Up</a>
+                      Dont have account?<a href="signup.php">&nbsp;Sign Up</a>
                       </form>
                   </div>
 </body>

@@ -79,7 +79,7 @@
                                 <a class="fas fa-sign-out-alt" href="login.php"> signin</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="fas fa-user-plus" href="signup.html"> signup</a>
+                                <a class="fas fa-user-plus" href="signup.php"> signup</a>
                                 </li>
                             </ul>
                     </nav>
