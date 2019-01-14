@@ -1,5 +1,3 @@
-
-
 <!Doctype html>
 <html lang="en">
   <head>
@@ -24,10 +22,8 @@
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item" style="margin-right:30px">
                                 <a class="fas fa-home" href="index.php"> home</a>
-                                <!-- </li>
-                                <li class="nav-item" >
-                                    <a class="fas fa-sign-out-alt" href="signup.php"> signup</a>
-                                  </li> -->
+
+
                             </ul>
                     </nav>
 

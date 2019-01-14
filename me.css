@@ -1,0 +1,134 @@
+/* body{
+
+    background-image: url(images/mord_rigd-GALAXY.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+} */
+
+#wrapper
+{
+ text-align:center;
+ margin:0 auto;
+ padding:0px;
+ width:995px;
+}
+
+#output_image
+{
+ /* max-width:30px;
+ padding-left: 12px; */
+ /* position: absolute;
+  top: -43px;
+  left: 410px; */
+
+}
+
+/* HEADING TEXT */
+
+ /* HEADING ON INDEX */
+
+ @import url("https://fonts.googleapis.com/css?family=Montserrat:900");
+
+ body {
+   box-sizing: border-box;
+   font-family: "Montserrat", sans-serif;
+ }
+
+ @keyframes isFloating {
+   0% {
+     transform: translatey(0px);
+   }
+   50% {
+     transform: translatey(-10px);
+   }
+   100% {
+     transform: translatey(0px);
+   }
+ }
+ .o-wall {
+   /* display: flex; */
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 100vw;
+   height: 100vh;
+   background-color: none;
+ }
+
+ .o-wall__claim {
+   transform: rotate(-3deg);
+ }
+ .o-wall__letters-list {
+   transform: skew(-10deg);
+   display: flex;
+   justify-content: center;
+   flex-direction: row;
+   text-transform: uppercase;
+   text-align: center;
+   cursor: default;
+ }
+ .o-wall__letters-list--letter {
+   animation: isFloating 2.6s ease-in-out infinite;
+   transition: text-shadow 200ms linear, transform 100ms linear;
+   padding: 0 0.05rem;
+   font-size: 6rem;
+   text-shadow: -12px 9px 12px rgba(0, 0, 0, 0.6);
+   color: white;
+ }
+ .o-wall__letters-list--letter:nth-child(2n) {
+   animation-delay: 150ms;
+ }
+ .o-wall__letters-list--letter:nth-child(3n) {
+   animation-delay: 300ms;
+ }
+ .o-wall__letters-list--letter:nth-child(4n) {
+   animation-delay: 450ms;
+ }
+ .o-wall__letters-list--letter:nth-child(5n) {
+   animation-delay: 600ms;
+ }
+ .o-wall__letters-list--letter:nth-child(6n) {
+   animation-delay: 750ms;
+ }
+ .o-wall__letters-list--letter:hover {
+   transform: scale(0.98);
+   text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
+ }
+ .o-wall__comments {
+   margin-top: 30px;
+   opacity: 0.6;
+   font-size: 1.15rem;
+   text-align: center;
+ }
+ .o-wall__comments p + p {
+   margin-top: 1rem;
+ }
+ .o-wall__comments--link {
+   display: inline-block;
+   padding-left: 0.35rem;
+   color: black;
+ }
+ .o-wall__comments--link:hover {
+   text-decoration: none;
+ }
+
+ .fas {
+   font-weight: 900;
+   color: white;
+ }
+
+
+ /* upload image */
+ input[type=file]{
+
+
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 50px;
+    bottom: 10px;
+
+ }
