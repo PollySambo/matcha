@@ -24,6 +24,7 @@ error_reporting(E_ALL);
         $active         = false;
         $notifi         = true;
         $token			= bin2hex(openssl_random_pseudo_bytes(16));
+        $Age = trim(htmlspecialchars($_POST['Age']));
         if (!isset($username) || empty($username) || strlen($username) < 4)
         {
           echo "! Username input is invalid - *also check to see if username is more than 4 characters long<br>";
@@ -62,12 +63,13 @@ error_reporting(E_ALL);
               $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
               // // PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING
               // $con->setAttribute();
-                      $sql = "INSERT INTO `users` ( `Username`, `Name`, `Surname`, `email`, `Password`, `token`, `active`, `notifications`, `gender`, `legal`, `preference`)
-                      VALUES (:username, :fname, :lname, :email, :pwd, :token, :activated, :notifications, :gen, :legal, :pref)";
+                      $sql = "INSERT INTO `users` ( `Username`, `Name`, `Surname`, `Age`, `email`, `Password`, `token`, `active`, `notifications`, `gender`, `legal`, `preference`)
+                      VALUES (:username, :fname, :lname, :Age, :email, :pwd, :token, :activated, :notifications, :gen, :legal, :pref)";
                       $stmt = $con->prepare($sql);
                       $stmt->bindParam(':username', $username);
                       $stmt->bindParam(':fname', $fname);
                       $stmt->bindParam(':lname', $lname);
+                      $stmt->bindParam(':Age', $Age);
                       $stmt->bindParam(':email', $email);
                       $stmt->bindParam(':pwd', $hashpass);
                       $stmt->bindParam(':token', $token);
@@ -86,7 +88,7 @@ error_reporting(E_ALL);
     Thank you for registering with MaTcHa.
     You can log in using the following credentials after verification:
     -------------------
-    USERNAME :".$username."
+    USERNAME :".$Username."
     -------------------
     please verify your account by clicking the link below
     http://127.0.0.1:8080/matcha/verify.php?email=$email&token=$token
@@ -175,7 +177,7 @@ error_reporting(E_ALL);
 
                <div class="col_half">
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                <input type="text" name="username" placeholder="Username" required />
+                <input id="username" type="text" name="username" placeholder="Username" required />
               </div>
             </div>
 
@@ -189,6 +191,13 @@ error_reporting(E_ALL);
               <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                 <input type="password" name="re_pwd" placeholder="Re_type Password" required />
               </div>
+                  <div > <span><i aria-hidden="true" class="fa fa-child"></i></span>
+                  <input id="testage" type="number" name="Age" placeholder="Age" required />
+                  </div>
+              <!-- <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                <input type="number" name="Age" placeholder="Age" required />
+              </div> -->
+              
                   <div class="input_field radio_option">
                       <input type="radio" name="male" id="rd1">
                       <label for="rd1">Male</label>
@@ -208,10 +217,10 @@ error_reporting(E_ALL);
                   <input type="checkbox" name="legal" id="cb1">
               <label for="cb1">Im Over 18</label>
                 </div>
-                <div class="input_field checkbox_option">
+                <!-- <div class="input_field checkbox_option">
                   <input type="checkbox" name="notifications">
               <label for="cb2">I want to receive the newsletter</label>
-                </div>
+                </div> -->
               <input class="button" type="submit" value="Register" />
             </form>
           </div>

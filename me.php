@@ -12,10 +12,15 @@ print_r($_SESSION);
 if (isset($_POST['submit']))
 {
     $Username = $_SESSION['Username'];
+    $user_id = $_SESSION['user_id'];
     $target_path="profiles/";
     $target_path=$target_path.basename($_FILES['uploadedfile']['name']);
     $uploadOk = 1;
-   
+    // Check if file already exists
+        if (file_exists($target_path)) {
+            echo "Profile Picture Has Been Uploaded.";
+            $uploadOk = 0;
+        }
 
     // Check file size
         if ($_FILES["uploadedfile"]["size"] > 500000) {
@@ -34,9 +39,10 @@ if (isset($_POST['submit']))
         try {
             $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-                    $sql = "INSERT INTO `pro_pic` ( `path`, `user`)
-                    VALUES ('".$target_path."', '".$Username."')";
+                    $sql = "INSERT INTO `pro_pic` ( `user_id`,`path`, `user`)
+                    VALUES ('".$user_id."','".$target_path."', '".$Username."')";
                     $stmt = $con->prepare($sql);
+                    // $stmt->bindParam(':target_path', $target_path);
                     $stmt->execute();
 
 
@@ -168,7 +174,7 @@ if (isset($_POST['submit']))
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
                 <input type="submit" value="submit" name="submit">
                 <input name="uploadedfile" type="file" style="height:35px;" />
-        </form>
+</form>
 
 
   </body>

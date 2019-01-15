@@ -1,3 +1,48 @@
+<?php
+session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once 'config/database.php';
+// print_r($_SESSION);
+
+try {
+  $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+  if (isset($_SESSION['loggedin']) === true)
+  {
+
+      $stmt = $con->query("SELECT * FROM users,pro_pic");
+      while ($row =  $stmt->fetch(PDO::FETCH_ASSOC)){
+     
+    echo ' 
+              <div class="centered">
+              <h1 style="text-transform: uppercase;">'.$Username.'</h1>
+
+                  <img  style=" border-radius: 20%;" src="'.$row['path'].'"  width="250 height="250" />
+                  
+                  <p><b>Name : '.$row['Name'].'</b></p>
+                  <p><b>Surname : '.$row['Surname'].'</b></p>
+                  <p><b>Gender : '.$row['gender'].'</b></p>
+                  <p><b>Interest : '.$row['preference'].'</b></p>
+                  <p><b>Age : 20</b></p>
+                  
+  
+              </div>
+           ';
+  }
+}
+
+  }
+
+  catch(PDOException $e)
+  {
+      die($e->getMessage());
+  }
+
+?>
+
 <!Doctype html>
 <html lang="en">
   <head>
@@ -25,38 +70,10 @@
 
 
                             </ul>
-                    </nav>
+        </nav>
 
 
-      <div class="split left">
-          <div class="centered">
-          <h1>RIGBY</h1></br>
 
-              <img src="profiles/rigby2.png" alt="regular_show">
-              <p>Age : 20</p>
-              <p>Gender : Male</p>
-              <p>Interest : Women</p>
-              <p>some text</p>
-              <div class="bg">
-            <input type="text" placeholder="Bio"/>
-        </div>
-          </div>
-
-        </div>
-
-       <div class="split right">
-          <div class="centered">
-          <h1>Eileen</h1></br>
-              <img src="profiles/Eileen.png" alt="regular_show">
-              <p><b>Age : 20</b></p>
-              <p><b>Gender : Female</b></p>
-              <p><b>Interest : Women</b></p>
-              <div class="bg">
-            <input type="text" placeholder="Bio">
-        </div>
-          </div>
-          </div>
-      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

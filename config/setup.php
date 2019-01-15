@@ -33,6 +33,7 @@ try {
         user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
         Name VARCHAR(255) NOT NULL,
         Surname VARCHAR(255) NOT NULL,
+        Age INT(6) NOT NULL,
         Username VARCHAR(255) NOT NULL,
         Email VARCHAR(255) NOT NULL,
         Password VARCHAR(255) NOT NULL,
@@ -65,9 +66,11 @@ catch(PDOException $e)
         //create the table users
     $sql = "CREATE TABLE IF NOT EXISTS pro_pic
     (
-        user_id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        pro_pic_id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        user_id INT(6) UNSIGNED,
         user VARCHAR(255) NOT NULL,
-        path VARCHAR(255) NOT NULL
+        path VARCHAR(255) NOT NULL, 
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
 
     )";
 
@@ -92,10 +95,12 @@ try {
         //create the table users
     $sql = "CREATE TABLE IF NOT EXISTS multiple
     (
-        user_id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        image_id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        user_id INT(6) UNSIGNED,
         user VARCHAR(255) NOT NULL,
         name VARCHAR(255) NOT NULL,
-        image longblob NOT NULL
+        image longblob NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
 
     )";
 
