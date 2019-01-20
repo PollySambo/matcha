@@ -6,7 +6,7 @@
     error_reporting(E_ALL);
 
     //Get the unique user ID of the user that has just registered.
-    include '/config/database.php';
+    include '../config/database.php';
 
     //Make sure that our query string parameters exist.
     if (isset($_GET['token']) && isset($_GET['email'])) {

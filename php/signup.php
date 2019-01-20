@@ -13,32 +13,74 @@
   <body>
       
         <!-- form -->
+        <div class="container">
+                    <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
 
-    <form class="form-signup">
-          
-            <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+        <form class="form-horizontal" method="post" action="signup.php">
+                <br>
+                <fieldset>
+                <legend>Signup here</legend>			
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Your Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" placeholder="Enter your Name" required>
+								</div>
+							</div>
+						</div>
 
-            <label for="inputName" class="sr-only">Full Name/label>
-            <input type="text"  name="name"  class="form-control" placeholder="username" required autofocus>
-           
-                <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email"  name="email"  class="form-control" placeholder="username" required autofocus>
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Your Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+								</div>
+							</div>
+						</div>
 
-            <label for="inputEmail" class="sr-only">Username</label>
-            <input type="text"  name="username"  class="form-control" placeholder="username" required autofocus>
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Username</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username"  placeholder="Enter your Username"/>
+								</div>
+							</div>
+						</div>
 
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password"  name="password" class="form-control" placeholder="Password" required>
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password"   placeholder="Enter your Password"/>
+								</div>
+							</div>
+						</div>
 
-            <label for="inputPassword" class="sr-only">Re-Password</label>
-            <input type="password"  name="re_password" class="form-control" placeholder="Re_Password" required>
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="confirm" placeholder="Confirm your Password"/>
+								</div>
+							</div>
+						</div>
 
-                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+						<div class="form-group ">
+							<input type="submit" value="submit"/>
+						</div>
+ </fieldset>
+					</form>
 
-                 <p class="mt-5 mb-3 text-muted">&copy; <i>psambo 2018</i></p>
-       
-        
-    </form>
+</div>
+</div>
+  </div>  
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -48,88 +90,90 @@
   </body>
 </html>
 
-
 <?php
     session_start();
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-        require_once 'config/database.php';
-        if (!empty($_POST['name']) || !empty($_POST['username']) || !empty($_POST['email']) || !empty($_POST['password']) || !empty($_POST['re_password'])) {
-            $name = trim(htmlspecialchars($_POST['name']));
-            $username = trim(htmlspecialchars($_POST['username']));
-            $email = trim(htmlspecialchars($_POST['email']));
-            $password = trim(htmlspecialchars($_POST['password']));
-            $re_passsword = trim(htmlspecialchars($_POST['re_password']));
-            $active = false;
-            $notifi = true;
-            $token = bin2hex(openssl_random_pseudo_bytes(16));
+    include '../config/database.php';
 
-            if (!isset($username) || empty($username) || strlen($username) < 4) {
-                echo '! Username input is invalid - *also check to see if username is more than 4 characters long<br>';
-            } elseif (!isset($email) || empty($email) || !(filter_var($email, FILTER_VALIDATE_EMAIL))) {
-                echo '! Email input is invalid<br>';
-            } elseif (!isset($password) || empty($password) || !($pwd === $re_passsword) || !(strlen($password) > 6) || (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password))) {
-                echo '! Password input is invalid<br>';
-                if (!($password === $re_passsword)) {
-                    echo '! Password fields do not match<br>';
-                }
-                if (!(strlen($password) > 6)) {
-                    echo '! Password length is too short, must be atleast 6 characters long<br>';
-                }
-                if (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)) {
-                    echo '! Password must contain letters and digits<br>';
-                }
-            } elseif ((isset($username) && !empty($username) && !(strlen($username) < 4))
-              && (isset($email) && !empty($email) && (filter_var($email, FILTER_VALIDATE_EMAIL)))
-              && (isset($password) && !empty($password) && ($password === $re_passsword) && (strlen($password) > 6) || (preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)))) {
-                $hashpass = password_hash($password, PASSWORD_BCRYPT);
-                try {
-                    $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-                    // // PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING
-                    // $con->setAttribute();
-                    $sql = 'INSERT INTO `users` ( `name`, `email`, `username`, `password`, `token`, `active`, `notifi`)
-                          VALUES (:name, :email, :username, :password, :token, :active, :noti)';
-                    $stmt = $con->prepare($sql);
-                    $stmt->bindParam(':name', $username);
-                    $stmt->bindParam(':email', $fname);
-                    $stmt->bindParam(':username', $email);
-                    $stmt->bindParam(':password', $hashpass);
-                    $stmt->bindParam(':token', $token);
-                    $stmt->bindParam(':activated', $active, PDO::PARAM_BOOL);
-                    $stmt->bindParam(':notifications', $notifi, PDO::PARAM_BOOL);
-                    $stmt->execute();
-                } catch (PDOException $e) {
-                    die($e->getMessage());
-                }
+    if (!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['username']) || !empty($_POST['password']) || !empty($_POST['confirm'])) {
+        $name = trim(htmlspecialchars($_POST['name']));
+        $email = trim(htmlspecialchars($_POST['email']));
+        $username = trim(htmlspecialchars($_POST['username']));
+        $password = trim(htmlspecialchars($_POST['password']));
+        $confirm = trim(htmlspecialchars($_POST['confirm']));
+        $token = bin2hex(openssl_random_pseudo_bytes(16));
+        $notifi = true;
+        $active = false;
+       
 
-                $message = '
-        Thank you for registering with MaTcHa.
-        You can log in using the following credentials after verification:
-        -------------------
-        USERNAME :'.$username."
-        -------------------
-        please verify your account by clicking the link below
-        http://127.0.0.1:8080/matcha2/verify.php?email=$email&token=$token
-    
-        Kind regards
-        MaTcHa Team";
+        if (!isset($username) || empty($username) || strlen($username) < 4) {
+            echo '! Username input is invalid - *also check to see if username is more than 4 characters long<br>';
+        } elseif (!isset($email) || empty($email) || !(filter_var($email, FILTER_VALIDATE_EMAIL))) {
+            echo '! Email input is invalid<br>';
+        } elseif (!isset($password) || empty($password) || !($password === $confirm) || !(strlen($password) > 6) || (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password))) {
+            echo '! Password input is invalid<br>';
+            if (!($password === $confirm)) {
+                echo '! Password fields do not match<br>';
+            }
+            if (!(strlen($password) > 6)) {
+                echo '! Password length is too short, must be atleast 6 characters long<br>';
+            }
+            if (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)) {
+                echo '! Password must contain letters and digits<br>';
+            }
+        } elseif ((isset($username) && !empty($username) && !(strlen($username) < 4))
+          && (isset($email) && !empty($email) && (filter_var($email, FILTER_VALIDATE_EMAIL)))
+          && (isset($password) && !empty($password) && ($password === $confirm) && (strlen($password) > 6) || (preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)))) {
+            $hashpass = password_hash($password, PASSWORD_BCRYPT);
 
-                $subject = 'verify your account';
-                if (mail($email, $subject, $message)) {
-                    $msg = 'Mail sent OK';
-                    echo "<script>alert('signed up');</script>";
-                    header('location:signin.php');
-                } else {
-                    die('email failed to send');
-                }
+            try {
+                $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+                $sql = 'INSERT INTO `users` ( `name`, `email`, `username`, `password`, `token`, `active`, `notifications`)
+                      VALUES (:name, :email, :username, :password, :token, :active, :notifications)';
+                $stmt = $con->prepare($sql);
+                $stmt->bindParam(':name', $name);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':password', $hashpass);
+                $stmt->bindParam(':token', $token);
+                $stmt->bindParam(':active', $active, PDO::PARAM_BOOL);
+                $stmt->bindParam(':notifications', $notifi, PDO::PARAM_BOOL);
+                $stmt->execute();
+
+            } catch (PDOException $e) {
+                die($e->getMessage());
+            }
+
+            $message = '
+    Thank you for registering with MaTcHa.
+    You can log in using the following credentials after verification:
+    -------------------
+    USERNAME :'.$username."
+    -------------------
+    please verify your account by clicking the link below
+    http://127.0.0.1:8080/matcha2/verify.php?email=$email&token=$token
+
+    Kind regards
+    MaTcHa Team";
+
+            $subject = 'verify your account';
+            if (mail($email, $subject, $message)) {
+                $msg = 'Mail sent OK';
+                
+                echo "<script>alert('signed up');</script>";
+                header('location:signin.php');
+
             } else {
-                die('Username/Email Already Exists');
+                die('email failed to send');
             }
         } else {
-            die('something went wrong');
+            die('Username/Email Already Exists');
         }
-                        $con = null;
+    } 
 
+    $con = null;
 ?>

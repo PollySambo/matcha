@@ -13,21 +13,21 @@
   <body>
       
       <!-- signin form -->
-<form class="form-signin">
-            <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <label for="inputEmail" class="sr-only">Username</label>
-            <input type="text"  name="psername"  class="form-control" placeholder="username" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password"  name="password" class="form-control" placeholder="Password" required>
-  <div class="checkbox mb-3">
-        <label>
-        <input type="checkbox" value="remember-me"> Remember me
-        </label>
-  </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; <i>psambo 2018</i></p>
-</form>
+        <form method="post" action="signin.php" class="form-signin" >
+                    <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <input type="text"  name="username"  class="form-control" placeholder="username" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password"  name="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+                <label>
+                <input type="checkbox" value="remember-me"> Remember me
+                </label>
+        </div>
+                <input type="submit"n class="btn btn-lg btn-primary btn-block"   value="login"/>
+                <p class="mt-5 mb-3 text-muted">&copy; <i>psambo 2018</i></p>
+        </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -43,10 +43,12 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
 
-  require_once '../config/database.php';
+  include '../config/database.php';
+
+
 
   try {
-      if (!empty($_POST['Username']) || !empty($_POST['Password'])) { // this is checking if the fields are not empty
+      if (!empty($_POST['username']) || !empty($_POST['password'])) { // this is checking if the fields are not empty
         $username = htmlspecialchars($_POST['username']); // check for html script and converts to harmless string.
         $password = htmlspecialchars($_POST['password']);
 
@@ -55,11 +57,11 @@
           }
           // Check for errors
       if (!isset($username) || empty($username)) {  // if username was not set or was left empty
-        echo '! Username input is invalid<br>'; //print out error
-      } elseif (!isset($password) || empty($password) || !(strlen($password) > 6) || (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $Password))) { //check if the password was empty , notset or of the length was too short or does not have all required characters
-        echo '! Password input is invalid<br>';
+        echo '! username input is invalid<br>'; //print out error
+      } elseif (!isset($password) || empty($password) || !(strlen($password) > 6) || (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password))) { //check if the password was empty , notset or of the length was too short or does not have all required characters
+        echo '! password input is invalid<br>';
           if (!(strlen($password) > 6)) {
-              echo '! Password length is too short, must be atleast 6 characters long<br>'; // password too short
+              echo '! password length is too short, must be atleast 6 characters long<br>'; // password too short
           }
           if (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)) {
               echo '! Password must contain letters and digits<br>'; // something is missing
@@ -75,18 +77,15 @@
           if (!$result) {
               die('Could not access credentials through database!');
           } else {
-              if ($result['Active']) {
-                  $validpassword = password_verify($Password, $result['Password']);
+              if ($result['active']) {
+                  $validpassword = password_verify($password, $result['password']);
                   if ($validpassword) {
                       // here we are creating session variables
                       $_SESSION['user_id'] = $result['user_id'];
-                      $_SESSION['Username'] = $result['Username'];
+                      $_SESSION['username'] = $result['username'];
                       $_SESSION['loggedin'] = true;
                       $_SESSION['logged_in'] = time();
-                      //$_SESSION['email_notify'] = $result['notifications'];
-                      // print_r($_SESSION);
-                      // die();
-                      // header('Location: me.php?');
+
                       exit;
                   } else {
                       die('Incorrect username / password combination!');

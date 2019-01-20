@@ -2,5 +2,5 @@
     $DB_DNS = "localhost";
     $DB_USER = "root";
     $DB_PASSWORD = "polite";
-    $DB_NAME = "matcha2";
+    $DB_NAME = "matcha";
 ?>
