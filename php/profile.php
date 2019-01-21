@@ -99,19 +99,19 @@
         
                                 <img style=" border-radius: 30%;" src="'.$rowIMG['path'].'"  width="250px" height="250px"/>
                             
-                                <div class="moon"><h1>'.$row["username"].'</h1></div>
+                                <div class="moon"><h1>'.$_SESSION["username"].'</h1></div>
 
-                                <div class="moon"><h2>'.$row['gender'].'</h2></div>
+                                <div class="moon"><h2>'.$rowIMG['gender'].'</h2></div>
 
                             </header>
                         <div class="profile-bio">
                         <h1>My Profile</h1>
 
 <br/>
-                    <div class="moon"><p><b>Name :'.$row["name"].'</b></p></div>
-                    <div class="moon"><p><b>Interest : '.$row["preference"].'</b></p></div>
-                    <div class="moon"><p><b>Bio: '.$row["bio"].'</b></p></div>
-                    <div class="moon"><p><b>Age: '.$row["age"].'</b></p></div>
+                    <div class="moon"><p><b>Name :'.$rowIMG["name"].'</b></p></div>
+                    <div class="moon"><p><b>Interest : '.$rowIMG["preference"].'</b></p></div>
+                    <div class="moon"><p><b>Bio: '.$rowIMG["bio"].'</b></p></div>
+                    <div class="moon"><p><b>Age: '.$rowIMG["age"].'</b></p></div>
 
 </div>
 
