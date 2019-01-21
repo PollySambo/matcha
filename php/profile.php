@@ -16,30 +16,30 @@
   <body>
 
 
-     <!-- <aside class="profile-card">
+  <aside class="profile-card"> 
 
 <header>
 
     <!-- here’s the avatar -->
     
-        <!-- <img src="https://c7.uihere.com/files/893/362/507/mitch-muscle-man-sorenstein-muscle-woman-character-regular-show-season-4-cartoon-network-cartoon-porn-thumb.jpg" width="220px" height="220px" />
-     -->
+        <img src="https://c7.uihere.com/files/893/362/507/mitch-muscle-man-sorenstein-muscle-woman-character-regular-show-season-4-cartoon-network-cartoon-porn-thumb.jpg" width="220px" height="220px" />
+    
 
     <!-- the username -->
-<!--    
-    <div class="moon"><h1>Psambo</h1></div> -->
+   
+    <div class="moon"><h1>Psambo</h1></div> 
 
     <!-- gender -->
 
-    <!-- <div class="moon"><h2>Female</h2></div>
+    <div class="moon"><h2>Female</h2></div>
 
-</header> -->
+</header>
 
 <!-- bit of a bio; who are you? -->
-<!-- <div class="profile-bio">
-<h1>My Profile</h1> -->
+<div class="profile-bio">
+<h1>My Profile</h1>
 
-<!-- <br/>
+<br/>
                     <div class="moon"><p><b>Name : polit sambo</b></p></div>
                     <div class="moon"><p><b>Gender : Female</b></p></div>
                     <div class="moon"><p><b>Interest : Women</b></p></div>
@@ -50,7 +50,7 @@
 
 
 
-</aside> --> -->
+</aside>
 
 
 
@@ -84,10 +84,11 @@
         // $row =  $stmt->fetch(PDO::FETCH_ASSOC);
         // // var_dump($row);
   
-            $stmt = $con->prepare("SELECT * FROM hobby, user WHERE user_id=:user_id");
+            $stmt = $con->prepare("SELECT * FROM hobby WHERE user_id=:user_id");
             $stmt->bindValue(':user_id', $user_id);
             $stmt->execute();
             $rowIMG =  $stmt->fetch(PDO::FETCH_ASSOC);
+            print_r($rowIMG);
                echo 
                '
 
@@ -95,23 +96,14 @@
                   <aside class="profile-card">
 
                             <header>
-
-                                <!-- here’s the avatar -->
         
                                 <img style=" border-radius: 30%;" src="'.$rowIMG['path'].'"  width="250px" height="250px"/>
-        
-
-                                <!-- the username -->
                             
                                 <div class="moon"><h1>'.$row["username"].'</h1></div>
-
-                                <!-- gender -->
 
                                 <div class="moon"><h2>'.$row['gender'].'</h2></div>
 
                             </header>
-
-                        <!-- bit of a bio; who are you? -->
                         <div class="profile-bio">
                         <h1>My Profile</h1>
 
@@ -127,21 +119,6 @@
 
 </aside>
             ';
-           
-            // $stmt = $con->prepare("SELECT * FROM four WHERE user_id=:user_id");
-            // $stmt->bindValue(':user_id', $user_id);
-            // $stmt->execute();
-            // $image = $stmt->fetchAll();
-            // echo
-            // '
-            // <td><img  style=" border-radius: 50%;" src="data:image/jpeg;base64,'.base64_encode($image[0]['image']).'"  width="250px" height="250px" /></td>
-            //     <td><img  style=" border-radius: 50%;" src="data:image/jpeg;base64,'.base64_encode($image[1]['image']).'"  width="250px" height="250px" /></td>
-            //     <td><img  style=" border-radius: 50%;" src="data:image/jpeg;base64,'.base64_encode($image[2]['image']).'"  width="250px" height="250px" /></td>
-            //     <td><img  style=" border-radius: 50%;" src="data:image/jpeg;base64,'.base64_encode($image[3]['image']).'"  width="250px" height="250px" /></td>
-            //   </tr>                  
-            //   </table>
-            //   </div>
-            // ';
     }
   
   }

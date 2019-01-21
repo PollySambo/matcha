@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/matcha2/css/signup.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/matcha/css/signup.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
@@ -155,7 +155,7 @@
     USERNAME :'.$username."
     -------------------
     please verify your account by clicking the link below
-    http://127.0.0.1:8080/matcha2/verify.php?email=$email&token=$token
+    http://127.0.0.1:8080/matcha/verify.php?email=$email&token=$token
 
     Kind regards
     MaTcHa Team";
