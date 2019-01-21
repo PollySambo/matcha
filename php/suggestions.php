@@ -65,7 +65,8 @@
 										<img src="'.$result['path'].'" alt="" />
 										<div class="profile-details">
 														<h1>'.$result['name'].'</h1>
-														<p class="description">'.$result['bio'].'</p>
+													
+														<p class="description">'.$result['gender'].'</p>
 														<p class="description">age :'.$result['age'].'</p>
 										
 										</div>

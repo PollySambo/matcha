@@ -1,5 +1,5 @@
 body {
-  color: #333;
+ background-color: #203;
 }
   
   .feather {
@@ -20,6 +20,8 @@ body {
     z-index: 100; /* Behind the navbar */
     padding: 48px 0 0; /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    background-color: #203;
+    
   }
   
   .sidebar-sticky {
@@ -40,7 +42,7 @@ body {
   
   .sidebar .nav-link {
     font-weight: 500;
-    color: #333;
+    color: purple;
   }
   
   .sidebar .nav-link .feather {
@@ -72,7 +74,7 @@ body {
   
   @media (min-width: 768px) {
     [role="main"] {
-      padding-top: 48px; /* Space for fixed navbar */
+      padding-top: 14px; /* Space for fixed navbar */
     }
   }
   
@@ -104,4 +106,14 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
+
+  .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: initial;
+    display: inline;
+    font-style: oblique;
+    font-variant: unset;
+    text-rendering: optimizeSpeed;
+    line-height: 1;
+    color: black;
   
