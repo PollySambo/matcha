@@ -24,7 +24,7 @@
             </div>
 
             <!-- block  for the fame ratings -->
-            <div class="block center">
+            <div class="block center center">
 
             </div>
 

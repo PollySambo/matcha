@@ -33,7 +33,7 @@
 
         <div class="profile center ">
           <form action ="search.php" method= "POST">
-                <input style="text-align: center;" type="text" name="search_box" placeholder= "search via tag "/>
+                <input id="user_info" style="text-align: center;" type="text" name="search_box" placeholder= "search via tag "/>
                 <label for="sort"> Sort by:</label>
                 <br>
 
@@ -48,11 +48,91 @@
                     </div>  
                   </select>
                 <br>
-                <button  class="r" type="submit" value= "search" name="search">Search</button>
+                <button id="search_button" class="r" type="submit" value= "search" name="search">Search</button>
+                <div id="search_results" style="padding:5px;"></div>
           </form>
         </div>
 
         <!-- output -->
+         <!-- JQuery library -->
+         <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+          </script>
+<script>
+
+  document.getElementById("search_button").addEventListener("click", function(event)
+  {
+  event.preventDefault()
+});
+    //Add a JQuery click listener to our search button.
+    $('#search_button').click(function(){
+        //If the search button is clicked,
+        //get the employee name that is being search for
+        //from the search_box.
+        var user_info = $('#searching').val();
+ 
+        //Carry out a GET Ajax request using JQuery
+        $.ajax({
+            //The URL of the PHP file that searches MySQL.
+            type: "POST",
+            url: 'search_server.php',
+            data: {
+                Username: user_info
+            },
+            success: function(returnData){
+                //Set the inner HTML of our search_results div to blank to
+                //remove any previous search results.
+                $('#search_results').html('');
+                //Parse the JSON that we got back from search_box.php
+                var results = JSON.parse(returnData);
+               
+                //Loop through our employee array and append their
+                //names to our search results div.
+                $.each(results, function(key, value){
+                    //The name of the employee will be present
+                    //in the "name" property.
+                    $('#search_results').append(value. Username + '<br>');
+                });
+                //If no employees match the name that was searched for, display a
+                //message saying that no results were found.
+                if(results.length == 0){
+                    $('#search_results').html('No employees with that name were found!');
+                }
+            }
+        
+    });
+        // $.ajax({type: "POST", url: 'search.php', data: {
+        //         Username: user_info
+        //     },
+        //     success: function(returnData){
+        //         //Set the inner HTML of our search_results div to blank to
+        //         //remove any previous search results.
+        //         $('#search_results').html('');
+        //         //Parse the JSON that we got back from search_box.php
+        //         var results = JSON.parse(returnData);
+               
+        //         //Loop through our employee array and append their
+        //         //names to our search results div.
+        //         $.each(results, function(key, value){
+        //           console.log(key);
+        //           console.log(value);
+        //             console.log(value. Username);
+        //             //The name of the employee will be present
+        //             //in the "name" property.
+        //             $('#search_results').append(value. Username + '<br>');
+        //         });
+        //         //If no employees match the name that was searched for, display a
+        //         //message saying that no results were found.
+        //         if(results.length == 0){
+        //           console.log("nada");
+        //             $('#search_results').html('No employees with that name were found!');
+        //         }
+        //     }
+        // });
+    });
+</script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -71,26 +151,36 @@
  
   include '../config/database.php';
  
-       try {
-         $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
-         // now set the PDO error mode to exception
-         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-         // create your desired database
-         $stmt = $con->prepare("SELECT * FROM users, hobby WHERE hobby.user_id = users.user_id");
-         $stmt->execute();
-         $results =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-         
-         // echo "<pre>";
-         // var_dump($results);
-         // echo "<pre>";
-         // die();
-
-        
- 
-         }
-       catch(PDOException $e)
-       {
-           die($e->getMessage());
-       } 
- 
+  if (isset($_POST['Username']))
+  {
+  
+      try{
+      $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+      
+      
+              // get the name that is being searched for 
+              $Username = $_POST['Username'];
+              // var_dump($Username);
+              // die();
+      
+      
+               // the simple sql query that i will be running
+                  $stmt = $con->prepare("SELECT * FROM users, hobby WHERE `Username` LIKE :Username");
+                 
+                  $stmt->execute();
+                  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+             
+  
+              // echo the $res array in a JSON formatas that we can 
+              // easily handle the results with the javascript / jQuerry
+              if (!$result)
+                  echo "no results";
+              else
+                  echo json_encode($result);
+      }
+      catch(PDOException $e)
+          {
+              echo $stmt . "<br>" . $e->getMessage();
+          }
+  }
 ?>

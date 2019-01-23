@@ -7,17 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/matcha/css/signup.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
-  <body>
-      
+  <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
+  
+              <!-- navbar -->
+      <nav style=" background-color: transparent;" class="navbar navbar-light bg-light">
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <a   class="fas fa-power-off" class="nav-link" href="sign_out.php"> Sign out</a>
+            </li>
+         </ul>
+      </nav>
+
+            <div id="container">
+                        <p><a href="https://en.wikipedia.org/wiki/Orange">
+                        SIGN UP
+                        </a></p>
+            </div>
+
         <!-- form -->
-        <div class="container">
+        <div class="container center">
                     <div class="row">
                     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
 
-        <form class="form-horizontal" method="post" action="signup.php">
+        <form class="form-horizontal" method="post" action="signup.php center">
                 <br>
                 <fieldset>
                 <legend>Signup here</legend>			
@@ -72,7 +88,7 @@
 						</div>
 
 						<div class="form-group ">
-							<input type="submit" value="submit"/>
+							<input class="r" type="submit" value="submit"/>
 						</div>
  </fieldset>
 					</form>
