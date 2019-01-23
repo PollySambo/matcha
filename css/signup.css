@@ -2,6 +2,47 @@ body {
   background-color: #222222;
   background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
+
+/* form */
+
+input {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: white;
+  /* border: unset; */
+  border: #FF1177;
+  background-color: none;
+  background-clip: padding-box;
+  border: 1px solid white;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* navbar */
+
+.fas {
+  font-weight: 900;
+  color:#ff1177;
+}
+
+.bg-light {
+background-color: transparent;
+}
+
+
+/* submit button */
+
+button {
+  overflow: -webkit-paged-x;
+  /* color: #203; */
+  background-color: #FF1177;
+  border: purple;
+  border-radius: .25rem;
+}
   
 #container {
   width: 500px;
@@ -274,30 +315,4 @@ p a:hover {
 }
 
 
-/* form */
 
-.form-control {
-  display: block;
-  width: 100%;
-  height: calc(2.25rem + 2px);
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: transparent;
-  /* background-clip: padding-box; */
-  border: 1px solid #ced4da;
-  /* border-radius: .25rem; */
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-/* navbar */
-
-.fas {
-  font-weight: 900;
-  color:#ff1177;
-}
-
-.bg-light {
-background-color: transparent;
-}

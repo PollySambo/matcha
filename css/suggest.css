@@ -16,6 +16,7 @@
     max-width: 500px;
     width: 500px;
     height: 150px;
+    padding-bottom: 30%;
   }
   
   .center {
@@ -38,7 +39,7 @@
   .profile-body img {
     margin: 15px 25px;
     height: 80%;
-    border: 3px solid white;
+    border: 3px solid #FF1177;
     border-radius: 100%;
     vertical-align: top;
     float:left

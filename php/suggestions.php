@@ -26,8 +26,8 @@
       
 
       <div id="container">
-            <p><a href="https://en.wikipedia.org/wiki/Orange">
-            SEARCH
+            <p style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Orange">
+            SUGGESTIONS
             </a></p>
       </div>
 	
@@ -71,8 +71,8 @@
 										<div class="profile-details">
 														<h1>'.$result['name'].'</h1>
 													
-														<p class="description">'.$result['gender'].'</p>
-														<p class="description">age :'.$result['age'].'</p>
+														<h3 class="description">'.$result['gender'].'</h3>
+														<h3 class="description">age :'.$result['age'].'</h3>
 										
 										</div>
 						</div>

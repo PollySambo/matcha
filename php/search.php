@@ -32,7 +32,7 @@
 
 
         <div class="profile center ">
-          <form action ="search.php" method= "POST">
+          <form action ="search_server.php" method= "POST">
                 <input id="user_info" style="text-align: center;" type="text" name="search_box" placeholder= "search via tag "/>
                 <label for="sort"> Sort by:</label>
                 <br>
@@ -60,18 +60,14 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous">
           </script>
-<script>
 
-  document.getElementById("search_button").addEventListener("click", function(event)
-  {
-  event.preventDefault()
-});
-    //Add a JQuery click listener to our search button.
+          <script>
+              //Add a JQuery click listener to our search button.
     $('#search_button').click(function(){
         //If the search button is clicked,
-        //get the employee name that is being search for
+        //get the .. name that is being search for
         //from the search_box.
-        var user_info = $('#searching').val();
+        var user_info = $('#user_info').val().trim();
  
         //Carry out a GET Ajax request using JQuery
         $.ajax({
@@ -87,52 +83,25 @@
                 $('#search_results').html('');
                 //Parse the JSON that we got back from search_box.php
                 var results = JSON.parse(returnData);
-               
-                //Loop through our employee array and append their
+                console.log(returnData);
+                //Loop through our .. array and append their
                 //names to our search results div.
-                $.each(results, function(key, value){
-                    //The name of the employee will be present
+                $.each(results, function(key, object){
+                    //The name of the .. will be present
                     //in the "name" property.
-                    $('#search_results').append(value. Username + '<br>');
+                    console.log(key);
+                    console.log(object);
+                    $('#search_results').append(object.username + '<br>');
                 });
-                //If no employees match the name that was searched for, display a
+                //If no .. match the name that was searched for, display a
                 //message saying that no results were found.
                 if(results.length == 0){
-                    $('#search_results').html('No employees with that name were found!');
+                    $('#search_results').html('No one with that name were found!');
                 }
             }
-        
+        });
     });
-        // $.ajax({type: "POST", url: 'search.php', data: {
-        //         Username: user_info
-        //     },
-        //     success: function(returnData){
-        //         //Set the inner HTML of our search_results div to blank to
-        //         //remove any previous search results.
-        //         $('#search_results').html('');
-        //         //Parse the JSON that we got back from search_box.php
-        //         var results = JSON.parse(returnData);
-               
-        //         //Loop through our employee array and append their
-        //         //names to our search results div.
-        //         $.each(results, function(key, value){
-        //           console.log(key);
-        //           console.log(value);
-        //             console.log(value. Username);
-        //             //The name of the employee will be present
-        //             //in the "name" property.
-        //             $('#search_results').append(value. Username + '<br>');
-        //         });
-        //         //If no employees match the name that was searched for, display a
-        //         //message saying that no results were found.
-        //         if(results.length == 0){
-        //           console.log("nada");
-        //             $('#search_results').html('No employees with that name were found!');
-        //         }
-        //     }
-        // });
-    });
-</script>
+          </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -141,46 +110,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-<?php
-  session_start();
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
- 
-  include '../config/database.php';
- 
-  if (isset($_POST['Username']))
-  {
-  
-      try{
-      $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
-      
-      
-              // get the name that is being searched for 
-              $Username = $_POST['Username'];
-              // var_dump($Username);
-              // die();
-      
-      
-               // the simple sql query that i will be running
-                  $stmt = $con->prepare("SELECT * FROM users, hobby WHERE `Username` LIKE :Username");
-                 
-                  $stmt->execute();
-                  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-             
-  
-              // echo the $res array in a JSON formatas that we can 
-              // easily handle the results with the javascript / jQuerry
-              if (!$result)
-                  echo "no results";
-              else
-                  echo json_encode($result);
-      }
-      catch(PDOException $e)
-          {
-              echo $stmt . "<br>" . $e->getMessage();
-          }
-  }
-?>

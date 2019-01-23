@@ -13,9 +13,22 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/hobby.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
-  <body >
+  <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
 
-    <h1 id="header">continue</h1>
+            <!-- navbar -->
+            <nav style=" background-color: transparent;" class="navbar navbar-light bg-light">
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <a   class="fas fa-power-off" class="nav-link" href="sign_out.php"> Sign out</a>
+            </li>
+         </ul>
+      </nav>
+
+            <div id="container">
+                        <p><a href="https://en.wikipedia.org/wiki/Orange">
+                        ABOUT ME.
+                        </a></p>
+            </div>
 
         <div class="inner contact">
                 <!-- Form Area -->
@@ -122,6 +135,9 @@ if (!empty($_POST['age']) || !empty($_POST['gender']) || !empty($_POST['preferen
         {
             die($e->getMessage());
         }
+  }
+  else {
+    header('location:multiple.php');
   }
 
 }

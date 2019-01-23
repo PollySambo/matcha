@@ -13,45 +13,24 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/profile.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
-  <body>
+  <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
 
+         <!-- navbar -->
+         <nav style=" background-color: transparent;" class="navbar navbar-light bg-light">
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <a   class="fas fa-power-off" class="nav-link" href="sign_out.php"> Sign out</a>
+            </li>
+         </ul>
+      </nav>
 
-  <aside class="profile-card"> 
+            <div id="container">
+                        <p><a href="https://en.wikipedia.org/wiki/Orange">
+                        PROFILE.
+                        </a></p>
+            </div>
 
-<header>
-
-    <!-- here’s the avatar -->
-    
-        <img src="https://c7.uihere.com/files/893/362/507/mitch-muscle-man-sorenstein-muscle-woman-character-regular-show-season-4-cartoon-network-cartoon-porn-thumb.jpg" width="220px" height="220px" />
-    
-
-    <!-- the username -->
-   
-    <div class="moon"><h1>Psambo</h1></div> 
-
-    <!-- gender -->
-
-    <div class="moon"><h2>Female</h2></div>
-
-</header>
-
-<!-- bit of a bio; who are you? -->
-<div class="profile-bio">
-<h1>My Profile</h1>
-
-<br/>
-                    <div class="moon"><p><b>Name : polit sambo</b></p></div>
-                    <div class="moon"><p><b>Gender : Female</b></p></div>
-                    <div class="moon"><p><b>Interest : Women</b></p></div>
-                    <div class="moon"><p><b>Bio: some text</b></p></div>
-                    <div class="moon"><p><b>Bio: some text</b></p></div>
-
-</div>
-
-
-
-</aside>
-
+ 
 
 
     <!-- Optional JavaScript -->
@@ -76,48 +55,51 @@
     if (isset($_SESSION['loggedin']) === true)
     {
         $user_id = $_SESSION['user_id'];
-        $userame = $username['username'];
+        $username =$_SESSION['username'];
   
         // $stmt = $con->prepare("SELECT * FROM users WHERE user_id=:user_id");
         // $stmt->bindValue(':user_id', $user_id);
         // $stmt->execute();
         // $row =  $stmt->fetch(PDO::FETCH_ASSOC);
         // // var_dump($row);
+        var_dump($_SESSION);
   
-            $stmt = $con->prepare("SELECT * FROM hobby WHERE user_id=:user_id");
+            $stmt = $con->prepare("SELECT * FROM users WHERE user_id=:user_id");
             $stmt->bindValue(':user_id', $user_id);
             $stmt->execute();
             $rowIMG =  $stmt->fetch(PDO::FETCH_ASSOC);
-            print_r($rowIMG);
+
+            $stmt = $con->prepare("SELECT * FROM hobby WHERE user_id=:user_id");
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->execute();
+            $row =  $stmt->fetch(PDO::FETCH_ASSOC);
+            
                echo 
                '
 
-
-                  <aside class="profile-card">
+                
+                  <div class="profile-card">
 
                             <header>
         
-                                <img style=" border-radius: 30%;" src="'.$rowIMG['path'].'"  width="250px" height="250px"/>
+                                <img style=" border-radius: 30%;" src="'.$row['path'].'"  width="250px" height="250px"/>
                             
-                                <div class="moon"><h1>'.$_SESSION["username"].'</h1></div>
+                                <div ><h1>'.$_SESSION["username"].'</h1></div>
 
-                                <div class="moon"><h2>'.$rowIMG['gender'].'</h2></div>
+                                <div ><h2>'.$row['gender'].'</h2></div>
 
                             </header>
                         <div class="profile-bio">
-                        <h1>My Profile</h1>
+                        <h1 style="color:  #ff1177;"><b>My Profile<b></h1>
 
 <br/>
-                    <div class="moon"><p><b>Name :'.$rowIMG["name"].'</b></p></div>
-                    <div class="moon"><p><b>Interest : '.$rowIMG["preference"].'</b></p></div>
-                    <div class="moon"><p><b>Bio: '.$rowIMG["bio"].'</b></p></div>
-                    <div class="moon"><p><b>Age: '.$rowIMG["age"].'</b></p></div>
+                    <div ><h1>Name :'.$rowIMG["name"].'</h1></div>
+                    <div ><h1>Interest : '.$row["preference"].'</h1></div>
+                    <div ><h1>Bio: '.$row["bio"].'</h1></div>
+                    <div><h1>Age: '.$row["age"].'</h1></div>
 
 </div>
 
-
-
-</aside>
             ';
     }
   

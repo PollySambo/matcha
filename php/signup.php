@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/matcha/css/signup.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/signup.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
@@ -33,7 +33,7 @@
                     <div class="row">
                     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
 
-        <form class="form-horizontal" method="post" action="signup.php center">
+        <form class="form-horizontal center" method="post" action="signup.php">
                 <br>
                 <fieldset>
                 <legend>Signup here</legend>			
@@ -88,7 +88,7 @@
 						</div>
 
 						<div class="form-group ">
-							<input class="r" type="submit" value="submit"/>
+							<button class="r" type="submit" value="submit">Sign Up</button>
 						</div>
  </fieldset>
 					</form>
@@ -181,7 +181,7 @@
                 $msg = 'Mail sent OK';
                 
                 echo "<script>alert('signed up');</script>";
-                header('location:signin.php');
+                header('location:hobby.php');
 
             } else {
                 die('email failed to send');
