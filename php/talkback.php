@@ -1,4 +1,6 @@
 <?php
+
+
 print_r($_POST);
 // var_dump($_POST['longitude']);
 // var_dump($_POST['latitude']);
@@ -8,5 +10,6 @@ print_r($_POST);
         echo "<p>my name is not" + $_POST['longitude']. + $_POST['latitude']."</p>";
     }
 
-    
+
+
     // print_r($_SESSION['myname'])    ?>
