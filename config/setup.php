@@ -115,6 +115,36 @@
                 echo $sql . "<br>" . $e->getMessage();
             }
             $con = null;
+
+
+
+             //this is the table for geo-location
+
+             try {
+                $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
+                    // now set the PDO error mode to exception
+                $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    //create the table users
+                $sql = "CREATE TABLE IF NOT EXISTS location
+                (
+                    `location_id` INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                    `user_id` INT(6) UNSIGNED,
+                    `user` VARCHAR(255) NOT NULL,
+                    `location` VARCHAR(255) NOT NULL,
+                    FOREIGN KEY (user_id) REFERENCES users(user_id)
+
+                )";
+
+                // user exec() because no results are returned
+                $con->exec($sql);
+                echo "Table location created successfully<br>";
+                }
+
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+            }
+            $con = null;
                         
 
             
