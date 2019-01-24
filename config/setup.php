@@ -130,12 +130,13 @@
                     `location_id` INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
                     `user_id` INT(6) UNSIGNED,
                     `user` VARCHAR(255) NOT NULL,
-                    `location` VARCHAR(255) NOT NULL,
+                    `longitude` VARCHAR(255) NOT NULL,
+                    `latitude` VARCHAR(255) NOT NULL,
                     FOREIGN KEY (user_id) REFERENCES users(user_id)
 
                 )";
 
-                // user exec() because no results are returned
+                    // user exec() because no results are returned
                 $con->exec($sql);
                 echo "Table location created successfully<br>";
                 }
