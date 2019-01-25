@@ -85,6 +85,7 @@
                       $_SESSION['username'] = $result['username'];
                       $_SESSION['loggedin'] = true;
                       $_SESSION['logged_in'] = time();
+                      $_SESSION['email']= $result['email'];
 
                       exit;
                   } else {

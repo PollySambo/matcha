@@ -30,9 +30,6 @@
                         </a></p>
             </div>
 
- 
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -57,11 +54,7 @@
         $user_id = $_SESSION['user_id'];
         $username =$_SESSION['username'];
   
-        // $stmt = $con->prepare("SELECT * FROM users WHERE user_id=:user_id");
-        // $stmt->bindValue(':user_id', $user_id);
-        // $stmt->execute();
-        // $row =  $stmt->fetch(PDO::FETCH_ASSOC);
-        // // var_dump($row);
+       
         var_dump($_SESSION);
   
             $stmt = $con->prepare("SELECT * FROM users WHERE user_id=:user_id");
