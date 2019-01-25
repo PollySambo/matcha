@@ -6,23 +6,13 @@
   
     include '../config/database.php';
 
-// var_dump($_POST['longitude']);
-// var_dump($_POST['latitude']);
-
-    // if (isset($_POST['longitude']) && isset($_POST['latitude']))
-    // {
-    //     echo "<p>my name is not" + $_POST['longitude']. + $_POST['latitude']."</p>";
-    // }
 
     try {
         
 
             if (isset($_POST['longitude']) && isset($_POST['latitude']))
             {
-                // echo "<p>my name is not" . $_POST['longitude'] . ' ' . $_POST['latitude']."</p>";
-                // die();
-                
-
+            
                 $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
                 $user = $_SESSION['username'];
