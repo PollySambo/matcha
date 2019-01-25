@@ -89,6 +89,9 @@
 
 						<div class="form-group ">
 							<button class="r" type="submit" value="submit">Sign Up</button>
+                        </div>
+                        <div class="form-group ">
+							<a  id="p" class="btn btn-default" href="signin.php">log in</a>
 						</div>
  </fieldset>
 					</form>
@@ -123,6 +126,7 @@
         $token = bin2hex(openssl_random_pseudo_bytes(16));
         $notifi = true;
         $active = false;
+        $block = false;
        
 
         if (!isset($username) || empty($username) || strlen($username) < 4) {

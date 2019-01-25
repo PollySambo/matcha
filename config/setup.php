@@ -39,7 +39,8 @@
                     `password` VARCHAR(255) NOT NULL,
                     `token` VARCHAR(255) NOT NULL,
                     `active` BOOLEAN NOT NULL,
-                    `notifications` BOOLEAN NOT NULL
+                    `notifications` BOOLEAN NOT NULL,
+                    `block` BOOLEAN NOT NULL
                 )";
             
                  $con->exec($sql);
