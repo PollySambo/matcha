@@ -30,7 +30,7 @@ try {
                 VALUES ('".$user_id."', '".$name."', '".$tmp."', '".$username."')";
                 $stmt = $con->prepare($sql);
                 $stmt->execute();
-                header('profile.php');
+                header('location:location.php');
 
                 
 
@@ -44,9 +44,13 @@ try {
     }
 
 
-                $result =  $sth = $con->query("SELECT * FROM four ");
+               $stmt = $con->prepare("SELECT * FROM four WHERE user_id = :user_id");
+                // $stmt = $con->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
 
-                while ($row =  $sth->fetch(PDO::FETCH_ASSOC))
+
+                while ($row =  $stmt->fetch(PDO::FETCH_ASSOC))
                 {
                     $display = $row['image'];
 

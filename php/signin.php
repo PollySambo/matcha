@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/matcha/css/signin.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
@@ -94,6 +95,7 @@
           $stmt = $con->prepare('SELECT * FROM users WHERE username = :username');
           $stmt->bindParam(':username', $username);
           $stmt->execute();
+          header('location:hobby.php');
           $result = $stmt->fetch();
           if (!$result) {
               die('Could not access credentials through database!');

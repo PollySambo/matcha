@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/signup.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
+  
   <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
   
               <!-- navbar -->
@@ -128,6 +129,7 @@
         $active = false;
         $block = false;
        
+   
 
         if (!isset($username) || empty($username) || strlen($username) < 4) {
             echo '! Username input is invalid - *also check to see if username is more than 4 characters long<br>';
@@ -152,8 +154,8 @@
             try {
                 $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-                $sql = 'INSERT INTO `users` ( `name`, `email`, `username`, `password`, `token`, `active`, `notifications`)
-                      VALUES (:name, :email, :username, :password, :token, :active, :notifications)';
+                $sql = 'INSERT INTO `users` ( `name`, `email`, `username`, `password`, `token`, `active`, `notifications`, `block`)
+                      VALUES (:name, :email, :username, :password, :token, :active, :notifications, :block)';
                 $stmt = $con->prepare($sql);
                 $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':email', $email);
@@ -162,7 +164,10 @@
                 $stmt->bindParam(':token', $token);
                 $stmt->bindParam(':active', $active, PDO::PARAM_BOOL);
                 $stmt->bindParam(':notifications', $notifi, PDO::PARAM_BOOL);
+                $stmt->bindParam(':block', $block, PDO::PARAM_BOOL);
                 $stmt->execute();
+
+                header('location:signin.php');
 
             } catch (PDOException $e) {
                 die($e->getMessage());
@@ -175,7 +180,7 @@
     USERNAME :'.$username."
     -------------------
     please verify your account by clicking the link below
-    http://127.0.0.1:8080/matcha/verify.php?email=$email&token=$token
+    http://127.0.0.1:8080/matcha/php/verify.php?email=$email&token=$token
 
     Kind regards
     MaTcHa Team";

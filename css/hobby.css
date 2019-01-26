@@ -170,6 +170,20 @@ textarea:hover{
 
 /* Send Button Styles */
 
+
+
+
+/* navbar */
+
+.fas {
+  font-weight: 900;
+  color:#ff1177;
+}
+
+.bg-light {
+background-color: transparent;
+}
+
 .form-btn {
   width: 180px;
   display: block;

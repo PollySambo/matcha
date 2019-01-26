@@ -70,7 +70,6 @@
                     `age` INT(80) NOT NULL,
                     `gender` VARCHAR(255) NOT NULL,
                     `preference` VARCHAR(255) NOT NULL,
-                    `location` VARCHAR(255) NOT NULL,
                     `bio` VARCHAR(255) NOT NULL,
                     FOREIGN KEY (user_id) REFERENCES users(user_id)
             
