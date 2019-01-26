@@ -12,24 +12,26 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="../css/suggest.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	</head>
-	<body>
-
-	 <!-- templete -->
-		     <!-- navbar -->
-			 <nav style=" background-color: transparent;" class="navbar navbar-light bg-light">
+	<body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
+  
+              <!-- navbar -->
+      <nav style=" background-color: transparent;" class="navbar navbar-light bg-light">
           <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
               <a   class="fas fa-power-off" class="nav-link" href="sign_out.php"> Sign out</a>
-            </li>
+			</li>
+			<li class="nav-item text-nowrap">
+			<a  class="fas fa-user-circle" class="nav-link" href="search.php"> search</a>
+			</li>
+			
          </ul>
       </nav>
-      
 
-      <div id="container">
-            <p style="text-align: center;"><a href="https://en.wikipedia.org/wiki/Orange">
-            SUGGESTIONS
-            </a></p>
-      </div>
+            <div id="container">
+                        <p><a href="https://en.wikipedia.org/wiki/Orange">
+                        SUGGESTIONS
+                        </a></p>
+            </div>
 	
 
 

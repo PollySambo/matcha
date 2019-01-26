@@ -1,42 +1,48 @@
-/* multiple */
-
-
 .fa, .fas {
-  color: #ff1177;
-  font-weight: 900;
-}
-
-.bg-light {
-  background-color: transparent!important;
-}
-
-/* bittons */
-
-button, input {
-  overflow: visible;
-  color: white;
-}
-
-[type=reset], [type=submit], button, html [type=button] {
-  -webkit-appearance: button;
-  background-color: #ff1177;
-  border-color: pink;
-  border-radius: .25rem;
-}
-
-
-/* .wrapper {
-    padding: 100px;
+    color: #ff1177;
+    font-weight: 900;
   }
   
-  .image--cover {
-    width: 150px;
+  .bg-light {
+    background-color: transparent!important;
+  }
+  
+
+
+  .wrapper {
+    max-width: 500px;
+    width: 500px;
     height: 150px;
-    border-radius: 50%;
-    margin: 20px;
-    object-fit: cover;
-    object-position: center right;
-  } */
+    padding-bottom: 30%;
+  }
+  
+  .center {
+    position: absolute;
+    left: 60%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* buttons */
+  
+  button, input {
+    overflow: visible;
+    color: white;
+  }
+  
+  [type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+    background-color: #ff1177;
+    border-color: rgb(90, 12, 64);
+    border-radius: .25rem;
+  }
+
+  button, input {
+    overflow: visible;
+    color: white;
+    background-color: transparent;
+}
+
 
 
   /* headings */

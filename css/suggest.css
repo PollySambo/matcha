@@ -12,6 +12,17 @@
 
     
   }
+
+  .fas {
+    font-weight: 900;
+    color:#ff1177;
+  }
+  
+  .bg-light {
+  background-color: transparent;
+  }
+  
+
   .profile-wrapper {
     max-width: 500px;
     width: 500px;
