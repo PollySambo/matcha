@@ -34,6 +34,12 @@
 					<input type="submit" name="signup" value="submit">
 				</form>
 			</div>
+			<a  id="p" href="fame_ratings.php">like or comment
+					</a>
+					<a  id="p" href="suggestions.php">see suggestions</a>
+                    <a  id="p" href="modify_username">change username</a>
+                    <a  id="p" href="modify_email.php">change email</a>
+                    <a  id="p" href="suggestions.php">location</a>
       
 
     <!-- Optional JavaScript -->

@@ -2,16 +2,21 @@
     font-family: 'Lato', sans-serif;
   }
   
-  body{
-    background-image: url();
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100%;
-
-    
+  #p {
+    float: left;
+    width: 180px;
+    height: 42px;
+    padding: 8px;
+    background: #ff1177;
+    color: white;
+    font-size: 17px;
+    border: 1px solid purple;
+    border-left: none;
+    cursor: pointer;
+    border-radius: .25rem;
   }
+
+  b
 
   .fas {
     font-weight: 900;

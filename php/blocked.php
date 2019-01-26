@@ -24,7 +24,7 @@
 
 <div id="container">
             <p><a href="https://en.wikipedia.org/wiki/Orange">
-            BLOCK LIST.
+            BLOCKED.
             </a></p>
 </div>
 
@@ -35,10 +35,10 @@
 
             <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                 <div class="card card-inverse card-info">
-                    <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+                    <!-- <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif"> -->
                     <div class="card-block">
                         <figure class="profile profile-inline">
-                            <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
+                            <!-- <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt=""> -->
                         </figure>
                         <h4 class="card-title">Tawshif Ahsan Khan</h4>
                         <div class="card-text">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-info btn-sm">Unblock</button>
+                        <button id="p" class="btn btn-info btn-sm">Unblock</button>
                     </div>
                 </div>
             </div>

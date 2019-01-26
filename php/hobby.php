@@ -33,7 +33,7 @@ if (!empty($_POST['age']) || !empty($_POST['gender']) || !empty($_POST['preferen
                 $stmt = $con->prepare($sql);
                 $stmt->execute();
 
-                header('location: http://localhost:8080/matcha/php/multiple.php');
+                header('location: http://localhost:8080/matcha/php/search_box.php');
 
         }
 

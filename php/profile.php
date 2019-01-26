@@ -29,6 +29,7 @@
                         PROFILE.
                         </a></p>
             </div>
+           
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -90,6 +91,11 @@
                     <div ><h1>Interest : '.$row["preference"].'</h1></div>
                     <div ><h1>Bio: '.$row["bio"].'</h1></div>
                     <div><h1>Age: '.$row["age"].'</h1></div>
+                    <a  id="p" href="suggestions.php">see suggestions</a>
+                    <a  id="p" href="modify_username">change username</a>
+                    <a  id="p" href="modify_email.php">change email</a>
+                    <a  id="p" href="suggestions.php">location</a>
+                    <a  id="p" href="blocked.php">block</a>
 
 </div>
 

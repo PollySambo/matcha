@@ -435,3 +435,38 @@ h5 {
       font-size: 3.5em;
     }
   }
+
+
+
+
+
+  #p {
+    float: left;
+    width: 100px;
+    height: 42px;
+    padding: 8px;
+    background: #ff1177;
+    color: white;
+    font-size: 17px;
+    border: 1px solid purple;
+    border-left: none;
+    cursor: pointer;
+    border-radius: .25rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .btn-info {
+    color: #fff;
+    background-color: #ff1177;
+    border-color: #17a2b8;
+    border-radius: .25rem;
+}
