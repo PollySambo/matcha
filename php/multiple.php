@@ -7,8 +7,6 @@ error_reporting(E_ALL);
 require_once '../config/database.php';
 
 
-print_r($_SESSION);
-
 try {
     $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
@@ -30,7 +28,7 @@ try {
                 VALUES ('".$user_id."', '".$name."', '".$tmp."', '".$username."')";
                 $stmt = $con->prepare($sql);
                 $stmt->execute();
-                header('location:location.php');
+                header('location:blocked.php');
 
                 
 
@@ -57,20 +55,10 @@ try {
 
                             echo '
                             <div class="wrapper">
-                                <img src="data:image/jpeg;base64,'.base64_encode($display).'" class="image--cover  width="250 height="250"/>
+                                <img src="data:image/jpeg;base64,'.base64_encode($display).'" class="image--cover  width="250px" height="250px"/>
 
                             </div>
                             ';
-            // <!-- <div class="wrapper">
-
-            // <img src="data:image/jpeg;base64,'.base64_encode($display).'" class="image--cover">
-            
-            // <img src="http://imgc.allpostersimages.com/images/P-473-488-90/68/6896/2GOJ100Z/posters/despicable-me-2-minions-movie-poster.jpg" alt="" class="image--cover" />
-            
-            // <img src="http://static.eharmony.com/blog/wp-content/uploads/2010/04/eHarmony-Blog-profile-picture.jpg" alt="" class="image--cover" />
-            
-            // <img src="https://i2.cdn.turner.com/cnnnext/dam/assets/140926165711-john-sutter-profile-image-large-169.jpg" alt="" class="image--cover" />
-            // </div> -->
                 }
 
 ?>
@@ -113,6 +101,8 @@ try {
                 <input type="file" name="img[]" multiple="multiple"  />
                 <input  class="r"name="submit" type="submit" />
             </form>
+            <a  id="p" href="blocked.php">blocked</a>
+            <a  id="p" href="location.html">location</a>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -124,6 +124,7 @@ if (!empty($_POST['age']) || !empty($_POST['gender']) || !empty($_POST['preferen
                    <a  id="p" href="suggestions.php">see suggestions</a>
                     <a  id="p" href="modify_email.php">change email</a>
                     <a  id="p" href="blocked.php">blocked</a>
+                    <a  id="p" href="location.html">location</a>
 
 
                     

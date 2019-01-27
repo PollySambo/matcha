@@ -49,7 +49,7 @@
 					<a  id="p" href="suggestions.php">see suggestions</a>
                     <a  id="p" href="modify_username">change username</a>
                     <a  id="p" href="modify_email.php">change email</a>
-                    <a  id="p" href="suggestions.php">location</a>
+                    <a  id="p" href="location.html.php">location</a>
         <!-- JQuery library -->
         <script
             src="https://code.jquery.com/jquery-3.3.1.js"

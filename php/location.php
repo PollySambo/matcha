@@ -71,6 +71,7 @@
                     <a  id="p" href="modify_username">change username</a>
                     <a  id="p" href="modify_email.php">change email</a>
                     <a  id="p" href="fame_ratings.php">fame</a>
+                    <a  id="p" href="blocked.php">blocked/a>
 
 
     <!-- Optional JavaScript -->
