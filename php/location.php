@@ -4,25 +4,23 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
   
+    // print_r($_SESSION);
     include '../config/database.php';
 
 
     try {
-        
-
+            $user_id = $_SESSION['user_id'];
+            $username = $_SESSION['username'];
             if (isset($_POST['longitude']) && isset($_POST['latitude']))
             {
             
                 $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-                $user = $_SESSION['username'];
-                $user_id = $_SESSION['user_id'];
-
                 $sql = 'INSERT INTO `location` ( `user_id`, `user`, `longitude`, `latitude`)
-                    VALUES (:user_id, :user, :longitude, :latitude)';
+                    VALUES (:user_id, :username, :longitude, :latitude)';
                 $stmt = $con->prepare($sql);
                 $stmt->bindParam(':user_id', $user_id);
-                $stmt->bindParam(':user', $user);
+                $stmt->bindParam(':user', $username);
                 $stmt->bindParam(':longitude', $_POST['longitude']);
                 $stmt->bindParam(':latitude', $_POST['latitude']);
                 $stmt->execute();
@@ -46,6 +44,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/location.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
+  
   <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
 
 <!-- navbar -->
