@@ -1,5 +1,6 @@
 <?php
 // session_start();
+// print_r($_SESSION);
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
@@ -40,6 +41,8 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC))
 ?>
 
 <?php
+session_start();
+print_r($_SESSION);
 
 try{
 	          $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD); // connect ot DB
@@ -91,9 +94,10 @@ try{
 <html>
 <head>
     <title>Image Upload</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/fame.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../css/fame.css" /> -->
 </head>
-<body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" >
+<body>>
+<!-- <body style="background-color: #222222; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;" > -->
 
          <!-- navbar -->
          <nav style=" background-color: transparent;" class="navbar navbar-light bg-light">

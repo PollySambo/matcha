@@ -3,6 +3,30 @@ h3{
   color: aliceblue;
 }
 
+
+.fas {
+  font-weight: 900;
+  color:#ff1177;
+}
+
+.bg-light {
+background-color: transparent;
+}
+
+#p {
+float: left;
+width: 180px;
+height: 42px;
+padding: 8px;
+background: #ff1177;
+color: white;
+font-size: 17px;
+border: 1px solid purple;
+border-left: none;
+cursor: pointer;
+border-radius: .25rem;
+}
+
 /* headings */
 body {
     background-color: #222222;

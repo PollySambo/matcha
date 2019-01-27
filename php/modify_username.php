@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 //  print_r($_SESSION);
 include '../config/database.php';
 
-print_r($_SESSION);
+// print_r($_SESSION);
 
 	try
 	{
@@ -83,10 +83,9 @@ print_r($_SESSION);
 						<input type="password" placeholder="Password" name="pwd" required>
 						<input type="submit" name="signup" value="submit"> -->
 		</form>
-		<a  id="p" href="fame_ratings.php">like or comment
-					</a>
+							<!-- links -->
+					<a  id="p" href="fame_ratings.php">like or comment</a>
 					<a  id="p" href="suggestions.php">see suggestions</a>
-                    <a  id="p" href="modify_username">change username</a>
                     <a  id="p" href="modify_email.php">change email</a>
                     <a  id="p" href="suggestions.php">location</a>
 

@@ -118,6 +118,14 @@ if (!empty($_POST['age']) || !empty($_POST['gender']) || !empty($_POST['preferen
                         <div class="clear"></div>
                     </form>
 
+
+                        		<!-- links -->
+                   <a  id="p" href="fame_ratings.php">like or comment</a>
+                   <a  id="p" href="suggestions.php">see suggestions</a>
+                    <a  id="p" href="modify_email.php">change email</a>
+                    <a  id="p" href="blocked.php">blocked</a>
+
+
                     
                     </div>
 

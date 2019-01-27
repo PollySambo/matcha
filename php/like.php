@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -23,7 +22,7 @@ if (isset($_GET['type'], $_GET['image_id']))
             // set the PDO error mode to exception
           $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $stmt = $con->query("INSERT INTO likes (user, image_id)
-                                SELECT '".$_SESSION['Username']."', '".$id."'
+                                SELECT '".$_SESSION['username']."', '".$id."'
                                 FROM images
                                 WHERE EXISTS (
                                     SELECT image_id
@@ -32,7 +31,7 @@ if (isset($_GET['type'], $_GET['image_id']))
                                 AND NOT EXISTS (
                                     SELECT image_id
                                     FROM likes
-                                    WHERE user = '".$_SESSION['Username']."'
+                                    WHERE user = '".$_SESSION['username']."'
                                     AND image_id = '".$id."')
                                     LIMIT 1
                                     ");

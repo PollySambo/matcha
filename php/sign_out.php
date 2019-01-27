@@ -6,5 +6,5 @@ session_unset();
 
 // destroy the session 
 session_destroy(); 
-header('location: dashboard.php');
+header('location: signin.php');
 ?>
