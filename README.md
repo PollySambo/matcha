@@ -39,8 +39,6 @@ git clone https://github.com/PollySambo/matcha
 # Setup
 ## Configuring Server Environment
 
-# Setup
-## Configuring Server Environment
 
 Locate and run the executable file
 
@@ -51,7 +49,7 @@ Start the server
 ![Server](./images/github/MAMP3.png)
 
 Browse to site location
-http://localhost/Camagru
+http://localhost/Matcha
 > NOTE - by default the server is set to port 80  or 81 
 
 ## Configuring Matcha
@@ -95,7 +93,7 @@ http://localhost/phpmyadmin/sql.php
 # Project insight
 
 ## Project Brief
-- [Camagru Project Brief](./images/github/matcha.en.pdf)
+- [Matcha Project Brief](./images/github/matcha.en.pdf)
 
 
 ## Project Stack / Technologies
