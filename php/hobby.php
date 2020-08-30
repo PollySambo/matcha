@@ -20,8 +20,8 @@ if (!empty($_POST['age']) || !empty($_POST['gender']) || !empty($_POST['preferen
     $target_path=$target_path.basename($_FILES['uploadedfile']['name']);
 
     // session variables
-    $username = $_SESSION['username'];
-    $user_id = $_SESSION['user_id'];
+     $_SESSION['username'] = "john";
+     $_SESSION['user_id'] = 3;
 
     if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path))
     {
@@ -29,11 +29,11 @@ if (!empty($_POST['age']) || !empty($_POST['gender']) || !empty($_POST['preferen
         $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
                 $sql = "INSERT INTO `hobby` ( `user_id`,`user`,`path`, `age`, `gender`, `preference`, `bio`)
-                VALUES ('".$user_id."','".$username."', '".$target_path."', '".$age."', '".$gender."', '".$preference."', '".$bio."')";
+                VALUES ('".$_SESSION['user_id']."','".$_SESSION['username']."', '".$target_path."', '".$age."', '".$gender."', '".$preference."', '".$bio."')";
                 $stmt = $con->prepare($sql);
                 $stmt->execute();
 
-                header('location: http://localhost:8080/matcha/php/location.html');
+                header('location: http://localhost:81/matcha/php/location.html');
 
         }
 

@@ -1,6 +1,6 @@
 <?php
     $DB_DNS = "localhost";
     $DB_USER = "root";
-    $DB_PASSWORD = "polite";
+    $DB_PASSWORD = "camagru";
     $DB_NAME = "matcha";
 ?>

@@ -14,7 +14,8 @@ require_once '../config/database.php';
 $stmt = $con->query("
                     SELECT
                     images.image_id,
-                    images.image,
+					images.image,
+					text,
                     COUNT(likes.like_id) AS likes,
                     GROUP_CONCAT(users.Username SEPARATOR '|') AS liked_by
                     
@@ -185,6 +186,14 @@ try{
   		<button type="submit" name="upload">POST</button>
   	</div>
   </form>
+
+  <a  id="p" href="profile.php">profile</a>
+   <a  id="p" href="fame_ratings.php">like or comment</a>
+   <a  id="p" href="suggestions.php">see suggestions</a>
+   <a  id="p" href="modify_username">change username</a>
+   <a  id="p" href="modify_email.php">change email</a>
+   <a  id="p" href="fame_ratings.php">fame</a>
+   <a  id="p" href="blocked.php">blocked</a>
 
 </body>
 </html>

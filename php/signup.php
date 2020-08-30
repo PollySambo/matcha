@@ -1,3 +1,94 @@
+<?php
+    session_start();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    include '../config/database.php';
+
+    if (!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['username']) || !empty($_POST['password']) || !empty($_POST['confirm'])) {
+        $name = trim(htmlspecialchars($_POST['name']));
+        $email = trim(htmlspecialchars($_POST['email']));
+        $username = trim(htmlspecialchars($_POST['username']));
+        $password = trim(htmlspecialchars($_POST['password']));
+        $confirm = trim(htmlspecialchars($_POST['confirm']));
+        $token = bin2hex(openssl_random_pseudo_bytes(16));
+        $notifi = true;
+        $active = false;
+        $block = false;
+       
+   
+
+        if (!isset($username) || empty($username) || strlen($username) < 4) {
+            echo '! Username input is invalid - *also check to see if username is more than 4 characters long<br>';
+        } elseif (!isset($email) || empty($email) || !(filter_var($email, FILTER_VALIDATE_EMAIL))) {
+            echo '! Email input is invalid<br>';
+        } elseif (!isset($password) || empty($password) || !($password === $confirm) || !(strlen($password) > 6) || (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password))) {
+            echo '! Password input is invalid<br>';
+            if (!($password === $confirm)) {
+                echo '! Password fields do not match<br>';
+            }
+            if (!(strlen($password) > 6)) {
+                echo '! Password length is too short, must be atleast 6 characters long<br>';
+            }
+            if (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)) {
+                echo '! Password must contain letters and digits<br>';
+            }
+        } elseif ((isset($username) && !empty($username) && !(strlen($username) < 4))
+          && (isset($email) && !empty($email) && (filter_var($email, FILTER_VALIDATE_EMAIL)))
+          && (isset($password) && !empty($password) && ($password === $confirm) && (strlen($password) > 6) || (preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)))) {
+            $hashpass = password_hash($password, PASSWORD_BCRYPT);
+
+            try {
+                $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+                $sql = 'INSERT INTO `users` ( `name`, `email`, `username`, `password`, `token`, `active`, `notifications`, `block`)
+                      VALUES (:name, :email, :username, :password, :token, :active, :notifications, :block)';
+                $stmt = $con->prepare($sql);
+                $stmt->bindParam(':name', $name);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':password', $hashpass);
+                $stmt->bindParam(':token', $token);
+                $stmt->bindParam(':active', $active, PDO::PARAM_BOOL);
+                $stmt->bindParam(':notifications', $notifi, PDO::PARAM_BOOL);
+                $stmt->bindParam(':block', $block, PDO::PARAM_BOOL);
+                $stmt->execute();
+
+            } catch (PDOException $e) {
+                die($e->getMessage());
+            }
+
+            $message = '
+    Thank you for registering with MaTcHa.
+    You can log in using the following credentials after verification:
+    -------------------
+    USERNAME :'.$username."
+    -------------------
+    please verify your account by clicking the link below
+    http://127.0.0.1:8080/matcha/php/verify.php?email=$email&token=$token
+
+    Kind regards
+    MaTcHa Team";
+
+            $subject = 'verify your account';
+            if (mail($email, $subject, $message)) {
+                $msg = 'Mail sent OK';
+                
+                echo "<script>alert('signed up');</script>";
+                header('location:hobby.php');
+
+            } else {
+                die('email failed to send');
+            }
+        } else {
+            die('Username/Email Already Exists');
+        }
+    } 
+
+    $con = null;
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -109,96 +200,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
-
-<?php
-    session_start();
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
-    include '../config/database.php';
-
-    if (!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['username']) || !empty($_POST['password']) || !empty($_POST['confirm'])) {
-        $name = trim(htmlspecialchars($_POST['name']));
-        $email = trim(htmlspecialchars($_POST['email']));
-        $username = trim(htmlspecialchars($_POST['username']));
-        $password = trim(htmlspecialchars($_POST['password']));
-        $confirm = trim(htmlspecialchars($_POST['confirm']));
-        $token = bin2hex(openssl_random_pseudo_bytes(16));
-        $notifi = true;
-        $active = false;
-        $block = false;
-       
-   
-
-        if (!isset($username) || empty($username) || strlen($username) < 4) {
-            echo '! Username input is invalid - *also check to see if username is more than 4 characters long<br>';
-        } elseif (!isset($email) || empty($email) || !(filter_var($email, FILTER_VALIDATE_EMAIL))) {
-            echo '! Email input is invalid<br>';
-        } elseif (!isset($password) || empty($password) || !($password === $confirm) || !(strlen($password) > 6) || (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password))) {
-            echo '! Password input is invalid<br>';
-            if (!($password === $confirm)) {
-                echo '! Password fields do not match<br>';
-            }
-            if (!(strlen($password) > 6)) {
-                echo '! Password length is too short, must be atleast 6 characters long<br>';
-            }
-            if (!preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)) {
-                echo '! Password must contain letters and digits<br>';
-            }
-        } elseif ((isset($username) && !empty($username) && !(strlen($username) < 4))
-          && (isset($email) && !empty($email) && (filter_var($email, FILTER_VALIDATE_EMAIL)))
-          && (isset($password) && !empty($password) && ($password === $confirm) && (strlen($password) > 6) || (preg_match('/(?=.*[a-z])(?=.*[0-9]).{6,}/i', $password)))) {
-            $hashpass = password_hash($password, PASSWORD_BCRYPT);
-
-            try {
-                $con = new PDO("mysql:host=$DB_DNS;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
-                $sql = 'INSERT INTO `users` ( `name`, `email`, `username`, `password`, `token`, `active`, `notifications`, `block`)
-                      VALUES (:name, :email, :username, :password, :token, :active, :notifications, :block)';
-                $stmt = $con->prepare($sql);
-                $stmt->bindParam(':name', $name);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':password', $hashpass);
-                $stmt->bindParam(':token', $token);
-                $stmt->bindParam(':active', $active, PDO::PARAM_BOOL);
-                $stmt->bindParam(':notifications', $notifi, PDO::PARAM_BOOL);
-                $stmt->bindParam(':block', $block, PDO::PARAM_BOOL);
-                $stmt->execute();
-
-                header('location:signin.php');
-
-            } catch (PDOException $e) {
-                die($e->getMessage());
-            }
-
-            $message = '
-    Thank you for registering with MaTcHa.
-    You can log in using the following credentials after verification:
-    -------------------
-    USERNAME :'.$username."
-    -------------------
-    please verify your account by clicking the link below
-    http://127.0.0.1:8080/matcha/php/verify.php?email=$email&token=$token
-
-    Kind regards
-    MaTcHa Team";
-
-            $subject = 'verify your account';
-            if (mail($email, $subject, $message)) {
-                $msg = 'Mail sent OK';
-                
-                echo "<script>alert('signed up');</script>";
-                header('location:hobby.php');
-
-            } else {
-                die('email failed to send');
-            }
-        } else {
-            die('Username/Email Already Exists');
-        }
-    } 
-
-    $con = null;
-?>
